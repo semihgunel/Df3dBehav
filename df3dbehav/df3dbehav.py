@@ -29,8 +29,8 @@ def main():
     parser.add_argument('--path',  required=True, metavar='P', type=str, help='pose result folder')
     parser.add_argument('-v', '--verbose', action='count', default=0,  help='print debug')
     args = parser.parse_args()
+    
     model = ClassifierDf3d.load_from_checkpoint(str(pathlib.Path(__file__).parent.resolve()) + '/../data/epoch=445-step=6243.ckpt')
-
     pts = read_pose_result(args.path)
     train_dataset = DatasetTest(pts, n_frames=100, transform=TimeSeriesTransformEval())
     loader = DataLoader(train_dataset, batch_size=32, num_workers=4, shuffle=False)
