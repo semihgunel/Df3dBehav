@@ -1,8 +1,6 @@
 # Install 
 ```bash
-git clone https://github.com/semihgunel/Df3dBehav
-cd Df3dBehav
-pip install -e .
+pip install df3dbehav
 ```
 
 # Run
