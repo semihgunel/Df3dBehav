@@ -7,7 +7,7 @@ pip install df3dbehav
 ```bash
 df3dbehav --path '/folder/with_pose_result_file/'
 ```
-This will save a file called df3d_behav.csv under the same folder.
+It will automatically find the pose_result file and save a file called df3d_behav.csv under the same folder.
 
 # Analyze the Results
 You can read the csv file using pandas:
