@@ -16,3 +16,7 @@ import pandas as pd
 pd.read_csv('behav_clsf.csv')
 ```
 ![image](https://user-images.githubusercontent.com/20509861/123464401-0901a400-d5ed-11eb-844a-7a88eb44eadd.png)
+
+
+# Limitations
+- Currently handles only canonical camera ordering.
