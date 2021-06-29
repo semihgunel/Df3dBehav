@@ -20,4 +20,4 @@ pd.read_csv('behav_clsf.csv')
 
 # Limitations
 - Currently handles only canonical camera ordering.
-- You might get strange REST classification in case you are using a unexpected FPS values (outside of 30-100 range).
+- You might get strange REST classification in case you are using unexpected FPS values (outside of 30-100 range).
