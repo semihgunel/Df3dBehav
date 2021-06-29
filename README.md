@@ -2,7 +2,12 @@
 ```bash
 pip install df3dbehav
 ```
-
+or, you can install locally by:
+```bash
+git clone https://github.com/semihgunel/Df3dBehav/
+cd df3dbehav
+pip install -e .
+```
 # Run
 ```bash
 df3dbehav --path '/folder/with_pose_result_file/'
