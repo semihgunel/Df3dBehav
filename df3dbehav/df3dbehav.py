@@ -16,7 +16,6 @@ from .dataset import DatasetTest
 from .augmentation import TimeSeriesTransformEval
 from .utils import read_pose_result 
 import pytorch_lightning as pl
-import pathlib
 from torch.utils.data import DataLoader
 
 torch2np = lambda x : x.cpu().data.numpy()
@@ -30,7 +29,7 @@ def main():
     parser.add_argument('-v', '--verbose', action='count', default=0,  help='print debug')
     args = parser.parse_args()
     
-    model = ClassifierDf3d.load_from_checkpoint(str(pathlib.Path(__file__).parent.resolve()) + '/../data/epoch=445-step=6243.ckpt')
+    model = ClassifierDf3d.load_from_checkpoint(str(Path(__file__).parent.resolve()) + '/../data/epoch=445-step=6243.ckpt')
     pts = read_pose_result(args.path)
     train_dataset = DatasetTest(pts, n_frames=100, transform=TimeSeriesTransformEval())
     loader = DataLoader(train_dataset, batch_size=32, num_workers=4, shuffle=False)
@@ -44,8 +43,9 @@ def main():
         for idx in range(y_hat.shape[0]):
             out[meta["min"][idx]:meta["max"][idx]] = y_hat[idx].T
 
-    print(f"Saving result at {Path(args.path).resolve()}")
-    df = pd.DataFrame(out.T, labels).to_csv(args.path + 'behav_clsf.csv')
+    out_path = Path(args.path).resolve() / 'behav_clsf.csv'
+    print(f"Saving result at {out_path}")
+    df = pd.DataFrame(out.T, labels).to_csv(out_path)
     
 if __name__ == "__main__":
     main()
